@@ -3,9 +3,16 @@
    Instructions: rename this file to styles.css and complete each TODO block.
 */
 
+:root {
+  --ink: #0A1220;
+  --slate: #1F2937;
+  --mist: #C4C9D4;
+  --blue: #3B82F6;
+  --blue-deep: #2563EB;
 
-
-
+  --surface: #eef0f4; /* mist softened for large backgrounds */
+  --surface-strong: var(--mist);
+}
 
 /* ===== Base styles (mostly done) ===== */
 * { box-sizing: border-box; }
@@ -14,7 +21,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
-  color: #222;
+  color: var(--slate);
   background: #fff;
 }
 
@@ -28,7 +35,7 @@ a:hover { text-decoration: underline; }
 
 /* ===== Header ===== */
 .site-header {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--mist);
   background: #fff;
 }
 
@@ -37,16 +44,18 @@ a:hover { text-decoration: underline; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 14px 0;
 }
 
 .brand {
   font-size: 28px;
   font-weight: 700;
+  color: var(--ink);
 }
 
 .brand .dot {
   /* TODO B (Color): light blue accent */
-  color: #5dade2;
+  color: var(--blue);
 }
 
 .site-nav a {
@@ -54,7 +63,12 @@ a:hover { text-decoration: underline; }
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: #444;
+  color: var(--slate);
+}
+
+.site-nav a:hover {
+  color: var(--blue-deep);
+  text-decoration: none;
 }
 
 
@@ -66,11 +80,12 @@ a:hover { text-decoration: underline; }
 .hero {
   /* TODO C (Background image hero) */
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    linear-gradient(135deg, rgba(10, 18, 32, 0.78), rgba(37, 99, 235, 0.45)),
     url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=60");
   background-size: cover;
   background-position: center;
   min-height: 360px;
+  color: #fff;
 }
 
 .hero-content {
@@ -84,13 +99,23 @@ a:hover { text-decoration: underline; }
   /* TODO E (Typography) */
   font-size: 46px;
   text-transform: uppercase;
+  color: #fff;
 }
 
 .hero-subhead {
   margin: 6px 0 22px;
   /* TODO F (Typography) */
   font-size: 22px;
-  color: #555;
+  color: var(--mist);
+}
+
+.hero .btn-dark {
+  background: var(--blue);
+  color: #fff;
+}
+
+.hero .btn-dark:hover {
+  background: var(--blue-deep);
 }
 
 
@@ -108,20 +133,37 @@ a:hover { text-decoration: underline; }
 
 .btn-dark {
   /* TODO G (Button styling) */
-  background: #333;
+  background: var(--ink);
   color: #fff;
+}
+
+.btn-dark:hover {
+  background: var(--blue-deep);
+  text-decoration: none;
 }
 
 .btn-outline {
   /* TODO H (Button styling) */
-  border: 2px solid #3a88a8;
-  color: #3a88a8;
+  border: 2px solid var(--blue);
+  color: var(--blue-deep);
   background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  text-decoration: none;
 }
 
 /* ===== Features (3 columns) ===== */
 .features {
-  padding: 42px 0;
+  padding: 48px 0;
+  background: var(--surface);
+}
+
+.features .section-title {
+  margin-bottom: 28px;
 }
 
 .features-grid {
@@ -134,24 +176,72 @@ a:hover { text-decoration: underline; }
   /* TODO J (Sizing / alignment) */
   flex: 1;
   text-align: center;
+  background: #fff;
+  border: 1px solid var(--mist);
+  border-top: 3px solid var(--blue);
+  border-radius: 8px;
+  padding: 28px 20px;
+}
+
+.feature h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.feature p {
+  margin: 0;
+  color: var(--slate);
 }
 
 .icon {
   width: 56px;
   height: 56px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--blue);
   border-radius: 999px;
   display: grid;
   place-items: center;
   margin: 0 auto 12px;
-  color: #666;
+  color: var(--blue-deep);
   font-size: 22px;
+  background: var(--surface);
 }
 
 /* ===== Featured content ===== */
 .featured {
-  padding: 42px 0 36px;
-  background: #f7f7f7;
+  padding: 48px 0 40px;
+  background: var(--ink);
+  color: var(--mist);
+}
+
+.featured .section-title {
+  color: #fff;
+}
+
+.featured .section-lede {
+  color: var(--mist);
+}
+
+.media {
+  background-image:
+    linear-gradient(rgba(10, 18, 32, 0.62), rgba(10, 18, 32, 0.62)),
+    url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=60");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(196, 201, 212, 0.35);
+  height: 260px;
+  display: grid;
+  place-items: center;
+}
+
+.media .btn-outline {
+  border-color: var(--mist);
+  color: #fff;
+}
+
+.media .btn-outline:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
 }
 
 .section-title {
@@ -160,22 +250,15 @@ a:hover { text-decoration: underline; }
   font-size: 18px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--ink);
 }
 
 .section-lede {
   text-align: center;
   max-width: 680px;
   margin: 10px auto 22px;
-  color: #666;
+  color: var(--slate);
   font-size: 13px;
-}
-
-.media {
-  background: #eaeaea;
-  border: 1px solid #ddd;
-  height: 260px;
-  display: grid;
-  place-items: center;
 }
 
 
@@ -185,7 +268,12 @@ a:hover { text-decoration: underline; }
 
 /* ===== Secondary content (2 cards) ===== */
 .secondary {
-  padding: 34px 0 44px;
+  padding: 48px 0 52px;
+  background: #fff;
+}
+
+.secondary .section-title {
+  margin-bottom: 28px;
 }
 
 .secondary-grid {
@@ -197,13 +285,17 @@ a:hover { text-decoration: underline; }
 .card {
   /* TODO L (Card styling) */
   flex: 1;
-  border: 1px solid #eee;
+  border: 1px solid var(--mist);
+  border-radius: 8px;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background: #fff;
 }
 
 .card-text {
-  padding: 18px;
+  padding: 22px;
+  background: var(--surface);
 }
 
 .card-text h3 {
@@ -211,11 +303,12 @@ a:hover { text-decoration: underline; }
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: var(--ink);
 }
 
 .card-text p {
   margin: 0 0 14px;
-  color: #666;
+  color: var(--slate);
   font-size: 13px;
 }
 
@@ -236,13 +329,35 @@ a:hover { text-decoration: underline; }
 
 /* ===== CTA ===== */
 .cta {
-  background: #f7f7f7;
-  padding: 42px 0;
+  background: var(--slate);
+  padding: 52px 0;
+  color: #fff;
 }
 
 .cta-inner {
   /* TODO N (Center CTA) */
   text-align: center;
+}
+
+.cta .section-title {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  color: var(--mist);
+  max-width: 520px;
+  margin: 0 auto 22px;
+}
+
+.cta .btn-dark {
+  background: #fff;
+  color: var(--ink);
+}
+
+.cta .btn-dark:hover {
+  background: var(--mist);
+  color: var(--ink);
 }
 
 
@@ -251,9 +366,10 @@ a:hover { text-decoration: underline; }
 
 /* ===== Footer ===== */
 .site-footer {
-  background: #fafafa;
-  border-top: 1px solid #eee;
-  padding: 24px 0;
+  background: var(--ink);
+  border-top: 1px solid var(--slate);
+  padding: 28px 0;
+  color: var(--mist);
 }
 
 .footer-inner {
@@ -266,11 +382,13 @@ a:hover { text-decoration: underline; }
 
 .footer-left {
   max-width: 360px;
-  color: #666;
+  color: var(--mist);
   font-size: 12px;
 }
 
-.footer-left a { color: #3a88a8; }
+.footer-left a { color: var(--blue); }
+
+.footer-left a:hover { color: #fff; }
 
 .footer-cols {
   display: flex;
@@ -282,11 +400,17 @@ a:hover { text-decoration: underline; }
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: var(--blue);
 }
 
 .footer-col a {
   display: block;
   font-size: 12px;
-  color: #666;
+  color: var(--mist);
   margin: 6px 0;
+}
+
+.footer-col a:hover {
+  color: #fff;
+  text-decoration: none;
 }
